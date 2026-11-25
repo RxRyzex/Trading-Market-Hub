@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MARKET HUB - Trading Mentor Recruitment">
+<title>MARKET HUB | Mentor Recruitment</title>
+<style>
+:root {
+ --bg:#080d0c;--panel:#111a17;--green:#35d399;
+ --muted:#a0aea7;--border:#25362e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif}
+header{height:75px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-weight:900;font-size:23px;letter-spacing:2px}
+.logo span{color:var(--green)}
+button,a{cursor:pointer}
+button{font-family:inherit}
+.lang{background:#17231e;color:white;padding:12px 17px;border:1px solid var(--border);border-radius:9px}
+.hero{max-width:950px;text-align:center;margin:110px auto 90px;padding:20px}
+.tag{color:var(--green);letter-spacing:3px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(40px,7vw,76px);line-height:1.08;margin:25px 0}
+h1 span{color:var(--green)}
+p{color:var(--muted);line-height:1.8}
+.hero p{max-width:650px;margin:20px auto 30px}
+.btn{display:inline-block;background:var(--green);color:#06130d;padding:16px 24px;border-radius:8px;text-decoration:none;font-weight:bold;margin:7px}
+.btn.alt{background:#17231e;color:white;border:1px solid var(--border)}
+section{max-width:1050px;margin:85px auto;padding:20px}
+h2{text-align:center;font-size:32px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:17px;margin-top:35px}
+.card{background:var(--panel);padding:25px;border:1px solid var(--border);border-radius:14px}
+.card h3{color:var(--green)}
+#application{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:35px}
+form{max-width:650px;margin:30px auto}
+label{display:block;margin:18px 0 8px;font-size:14px}
+input,select,textarea{width:100%;padding:14px;background:#080f0c;color:white;border:1px solid #34483d;border-radius:8px;font-size:15px}
+textarea{min-height:100px;resize:vertical}
+.submit{width:100%;padding:16px;margin-top:25px;background:var(--green);color:#06130d;font-weight:bold;border:0;border-radius:8px}
+.note{font-size:12px}
+#language{min-height:calc(100vh - 75px);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.language-card{max-width:600px;width:100%;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:45px 25px}
+.language-options{display:flex;gap:15px;margin-top:30px}
+.language-options button{flex:1;padding:22px;background:#172820;color:white;border:1px solid #345344;border-radius:12px;font-size:17px}
+.language-options button:hover{border-color:var(--green)}
+footer{text-align:center;padding:35px;border-top:1px solid var(--border);color:var(--muted)}
+footer a{color:var(--green)}
+@media(max-width:550px){.language-options{flex-direction:column}.hero{margin:65px auto}header{padding:0 5%}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">MARKET <span>HUB</span></div>
+ <button class="lang" onclick="showLanguage()">🇫🇷 / 🇬🇧</button>
+</header>
+
+<div id="language">
+ <div class="language-card">
+  <div class="logo">MARKET <span>HUB</span></div>
+  <p>WELCOME TO MARKET HUB</p>
+  <h1 style="font-size:35px">Choose your language</h1>
+  <p>Choisissez votre langue / Select your language</p>
+  <div class="language-options">
+   <button onclick="setLanguage('fr')">🇫🇷 Français</button>
+   <button onclick="setLanguage('en')">🇬🇧 English</button>
+  </div>
+ </div>
+</div>
+
+<main id="home" hidden>
+ <div class="hero">
+  <div class="tag" data-fr="RECRUTEMENT DE FORMATEURS" data-en="MENTOR RECRUITMENT"></div>
+  <h1 data-fr="Partage ton savoir.<br><span>Rejoins MARKET HUB.</span>" data-en="Share your knowledge.<br><span>Join MARKET HUB.</span>"></h1>
+  <p data-fr="Tu es trader et tu souhaites transmettre tes connaissances ? Rejoins notre communauté en tant que formateur et propose tes propres formations." data-en="Are you a trader who wants to share your knowledge? Join our community as a mentor and offer your own courses."></p>
+  <a href="#application" class="btn" data-fr="DEVENIR FORMATEUR →" data-en="BECOME A MENTOR →"></a>
+  <a href="https://discord.gg/ZGrYs8Bub" target="_blank" rel="noopener" class="btn alt">DISCORD ↗</a>
+ </div>
+
+ <section>
+  <h2 data-fr="Nos domaines de formation" data-en="Our training fields"></h2>
+  <div class="cards">
+   <div class="card"><h3>Forex</h3><p data-fr="Marché des devises et stratégies." data-en="Currency markets and strategies."></p></div>
+   <div class="card"><h3>Crypto</h3><p data-fr="Cryptomonnaies et analyse de marché." data-en="Cryptocurrencies and market analysis."></p></div>
+   <div class="card"><h3>Indices</h3><p data-fr="Indices boursiers et analyses." data-en="Stock indices and analysis."></p></div>
+   <div class="card"><h3>Stocks</h3><p data-fr="Actions et marchés financiers." data-en="Stocks and financial markets."></p></div>
+   <div class="card"><h3>Futures</h3><p data-fr="Contrats à terme et stratégies." data-en="Futures contracts and strategies."></p></div>
+   <div class="card"><h3>Risk Management</h3><p data-fr="Gestion du risque et discipline." data-en="Risk management and discipline."></p></div>
+  </div>
+ </section>
+
+ <section id="application">
+  <h2 data-fr="Devenir formateur" data-en="Become a mentor"></h2>
+  <p style="text-align:center" data-fr="Présente-nous ton profil et ton projet." data-en="Tell us about yourself and your training plans."></p>
+  <form id="mentorForm">
+   <label data-fr="Nom ou pseudonyme Discord" data-en="Name or Discord username"></label>
+   <input required name="name" maxlength="100">
+   <label>Email</label>
+   <input required type="email" name="email">
+   <label data-fr="Spécialité" data-en="Specialty"></label>
+   <select required name="specialty">
+    <option value="" data-fr="Choisir une spécialité" data-en="Choose a specialty">Choisir une spécialité</option>
+    <option>Forex</option><option>Crypto</option><option>Indices</option>
+    <option>Stocks</option><option>Futures</option>
+    <option>Technical Analysis</option><option>Risk Management</option>
+    <option>Other</option>
+   </select>
+   <label data-fr="Expérience en trading" data-en="Trading experience"></label>
+   <textarea required name="experience"></textarea>
+   <label data-fr="Présente ta formation" data-en="Describe your course"></label>
+   <textarea required name="course"></textarea>
+   <label data-fr="Prix demandé et devise" data-en="Proposed price and currency"></label>
+   <input required name="price" placeholder="Ex: 100 EUR / 150 CAD">
+   <label data-fr="Portfolio ou preuves d'expérience (facultatif)" data-en="Portfolio or experience link (optional)"></label>
+   <input name="portfolio" type="url" placeholder="https://...">
+   <button class="submit" type="submit" data-fr="ENVOYER MA CANDIDATURE" data-en="SUBMIT APPLICATION"></button>
+   <p class="note" data-fr="Cette version de démonstration ne transmet pas encore les candidatures. Les résultats financiers ne sont pas garantis." data-en="This demo does not yet submit applications. Financial results are not guaranteed."></p>
+  </form>
+ </section>
+</main>
+
+<footer>
+ MARKET HUB © 2026 · <a href="https://discord.gg/ZGrYs8Bub">Discord</a>
+</footer>
+
+<script>
+let currentLanguage='fr';
+
+function setLanguage(lang){
+ currentLanguage=lang;
+ document.documentElement.lang=lang;
+ document.getElementById('language').hidden=true;
+ document.getElementById('home').hidden=false;
+ document.querySelectorAll('[data-fr]').forEach(el=>{
+  el.innerHTML=el.dataset[lang];
+ });
+ document.querySelectorAll('option[data-fr]').forEach(el=>{
+  el.textContent=el.dataset[lang];
+ });
+}
+
+function showLanguage(){
+ document.getElementById('home').hidden=true;
+ document.getElementById('language').hidden=false;
+}
+
+document.getElementById('mentorForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ alert(currentLanguage==='fr'
+ ? "Le formulaire est en démonstration. Le système d'envoi sera connecté prochainement."
+ : "This is a demo form. Submission will be connected soon.");
+});
+</script>
+</body>
+</html>
