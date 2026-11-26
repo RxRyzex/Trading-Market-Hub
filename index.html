@@ -20,7 +20,6 @@
 }
 
 * {box-sizing:border-box}
-
 html {scroll-behavior:smooth}
 
 body {
@@ -274,9 +273,13 @@ h2 {
 .progress-labels span {
   font-size:12px;
   color:var(--muted);
+  transition:color .3s;
 }
 
-.progress-labels .active {color:var(--green);font-weight:bold}
+.progress-labels .active {
+  color:var(--green);
+  font-weight:bold;
+}
 
 .progress-track {
   height:8px;
@@ -290,20 +293,69 @@ h2 {
   width:33.33%;
   background:linear-gradient(90deg,var(--green),var(--blue));
   border-radius:20px;
-  transition:.3s;
+  transition:width .55s cubic-bezier(.2,.8,.2,1);
 }
 
 form {
   max-width:650px;
   margin:30px auto 0;
+  overflow:hidden;
 }
 
-.form-step {display:none}
-.form-step.active {display:block;animation:appear .3s ease}
+/* ANIMATIONS DES PAGES */
 
-@keyframes appear {
-  from {opacity:0;transform:translateY(8px)}
-  to {opacity:1;transform:translateY(0)}
+.form-step {
+  display:none;
+  opacity:0;
+}
+
+.form-step.active {
+  display:block;
+  opacity:1;
+  animation:slideInRight .45s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.form-step.leaving-left {
+  display:block;
+  animation:slideOutLeft .25s ease forwards;
+}
+
+.form-step.leaving-right {
+  display:block;
+  animation:slideOutRight .25s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity:0;
+    transform:translateX(45px);
+  }
+  to {
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity:1;
+    transform:translateX(0);
+  }
+  to {
+    opacity:0;
+    transform:translateX(-35px);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity:1;
+    transform:translateX(0);
+  }
+  to {
+    opacity:0;
+    transform:translateX(35px);
+  }
 }
 
 .step-title {
@@ -363,9 +415,14 @@ select option {background:#111827}
   border-radius:11px;
   font-weight:bold;
   font-size:14px;
+  transition:transform .2s,opacity .2s;
 }
 
-.next {
+.form-buttons button:hover {
+  transform:translateY(-2px);
+}
+
+.next,.submit {
   background:linear-gradient(100deg,var(--green),#61d7e8);
   color:#07130f;
 }
@@ -375,15 +432,16 @@ select option {background:#111827}
   color:white;
 }
 
-.submit {
-  background:linear-gradient(100deg,var(--green),#61d7e8);
-  color:#07130f;
-}
-
 .note {
   font-size:12px;
   text-align:center;
   margin-top:20px;
+}
+
+#formMessage {
+  text-align:center;
+  margin-top:20px;
+  font-weight:bold;
 }
 
 footer {
@@ -395,12 +453,6 @@ footer {
 
 footer a {color:var(--green)}
 
-#formMessage {
-  text-align:center;
-  margin-top:20px;
-  font-weight:bold;
-}
-
 @media(max-width:600px) {
   header {padding:0 5%}
   .hero {margin:65px auto}
@@ -408,6 +460,14 @@ footer a {color:var(--green)}
   #application {padding:22px 16px}
   .form-buttons {flex-direction:column}
   .progress-labels span {font-size:10px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
 }
 </style>
 </head>
@@ -484,12 +544,13 @@ footer a {color:var(--green)}
         <span data-fr="2. Expérience" data-en="2. Experience"></span>
         <span data-fr="3. Motivation" data-en="3. Motivation"></span>
       </div>
-      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
     </div>
 
     <form id="mentorForm">
 
-      <!-- ÉTAPE 1 -->
       <div class="form-step active">
         <h3 class="step-title" data-fr="👤 Parle-nous de toi" data-en="👤 Tell us about yourself"></h3>
         <p class="step-description" data-fr="Commençons par quelques informations générales." data-en="Let's start with some general information."></p>
@@ -522,7 +583,6 @@ footer a {color:var(--green)}
         </div>
       </div>
 
-      <!-- ÉTAPE 2 -->
       <div class="form-step">
         <h3 class="step-title" data-fr="📈 Ton expérience" data-en="📈 Your experience"></h3>
         <p class="step-description" data-fr="Explique-nous ton parcours et tes connaissances." data-en="Tell us about your background and knowledge."></p>
@@ -556,7 +616,7 @@ footer a {color:var(--green)}
 
         <div class="field">
           <label data-fr="Décris ton expérience et tes connaissances *" data-en="Describe your experience and knowledge *"></label>
-          <textarea required name="experience" maxlength="2000" placeholder="..."></textarea>
+          <textarea required name="experience" maxlength="2000"></textarea>
         </div>
 
         <div class="field">
@@ -575,7 +635,6 @@ footer a {color:var(--green)}
         </div>
       </div>
 
-      <!-- ÉTAPE 3 -->
       <div class="form-step">
         <h3 class="step-title" data-fr="🚀 Tes motivations" data-en="🚀 Your motivation"></h3>
         <p class="step-description" data-fr="C'est le moment de nous expliquer pourquoi tu souhaites rejoindre l'équipe." data-en="Tell us why you want to join the team."></p>
@@ -628,7 +687,6 @@ footer a {color:var(--green)}
       <div id="formMessage" role="status"></div>
     </form>
   </section>
-
 </main>
 
 <footer>
@@ -639,6 +697,7 @@ footer a {color:var(--green)}
 <script>
 let currentLanguage = 'fr';
 let currentStep = 0;
+let isAnimating = false;
 
 const steps = document.querySelectorAll('.form-step');
 const progressFill = document.getElementById('progressFill');
@@ -661,7 +720,7 @@ function setLanguage(lang) {
     el.textContent = el.dataset[lang];
   });
 
-  updateStep();
+  updateStepControls();
 }
 
 function showLanguage() {
@@ -669,26 +728,8 @@ function showLanguage() {
   document.getElementById('language').hidden = false;
 }
 
-function updateStep() {
-  steps.forEach((step, index) => {
-    step.classList.toggle('active', index === currentStep);
-  });
-
-  progressFill.style.width = ((currentStep + 1) / steps.length * 100) + '%';
-
-  progressLabels.forEach((label, index) => {
-    label.classList.toggle('active', index === currentStep);
-  });
-
-  prevBtn.hidden = currentStep === 0;
-  nextBtn.hidden = currentStep === steps.length - 1;
-  submitBtn.hidden = currentStep !== steps.length - 1;
-
-  document.getElementById('formMessage').textContent = '';
-}
-
 function validateCurrentStep() {
-  const fields = steps[currentStep].querySelectorAll('input,select,textarea');
+  const fields = steps[currentStep].querySelectorAll('input, select, textarea');
 
   for (const field of fields) {
     if (!field.checkValidity()) {
@@ -700,26 +741,59 @@ function validateCurrentStep() {
   return true;
 }
 
-nextBtn.addEventListener('click', () => {
-  if (!validateCurrentStep()) return;
+function updateStepControls() {
+  progressFill.style.width =
+    ((currentStep + 1) / steps.length * 100) + '%';
 
-  if (currentStep < steps.length - 1) {
-    currentStep++;
-    updateStep();
-  }
-});
+  progressLabels.forEach((label, index) => {
+    label.classList.toggle('active', index === currentStep);
+  });
 
-prevBtn.addEventListener('click', () => {
-  if (currentStep > 0) {
-    currentStep--;
-    updateStep();
-  }
-});
+  prevBtn.hidden = currentStep === 0;
+  nextBtn.hidden = currentStep === steps.length - 1;
+  submitBtn.hidden = currentStep !== steps.length - 1;
+}
+
+function changeStep(direction) {
+  if (isAnimating) return;
+
+  if (direction === 1 && !validateCurrentStep()) return;
+
+  const newStep = currentStep + direction;
+
+  if (newStep < 0 || newStep >= steps.length) return;
+
+  isAnimating = true;
+
+  const oldElement = steps[currentStep];
+  const newElement = steps[newStep];
+
+  oldElement.classList.remove('active');
+  oldElement.classList.add(
+    direction === 1 ? 'leaving-left' : 'leaving-right'
+  );
+
+  newElement.classList.add('active');
+
+  currentStep = newStep;
+
+  updateStepControls();
+
+  document.getElementById('formMessage').textContent = '';
+
+  setTimeout(() => {
+    oldElement.classList.remove('leaving-left', 'leaving-right');
+    isAnimating = false;
+  }, 460);
+}
+
+nextBtn.addEventListener('click', () => changeStep(1));
+prevBtn.addEventListener('click', () => changeStep(-1));
 
 document.getElementById('mentorForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  if (!validateCurrentStep()) return;
+  if (isAnimating || !validateCurrentStep()) return;
 
   document.getElementById('formMessage').textContent =
     currentLanguage === 'fr'
@@ -728,6 +802,8 @@ document.getElementById('mentorForm').addEventListener('submit', function(e) {
 
   document.getElementById('formMessage').style.color = 'var(--green)';
 });
+
+updateStepControls();
 </script>
 
 </body>
