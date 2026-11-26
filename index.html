@@ -4,154 +4,731 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MARKET HUB - Trading Mentor Recruitment">
+<meta name="description" content="MARKET HUB - Mentor Recruitment">
 <title>MARKET HUB | Mentor Recruitment</title>
+
 <style>
 :root {
- --bg:#080d0c;--panel:#111a17;--green:#35d399;
- --muted:#a0aea7;--border:#25362e;
+  --bg:#080b12;
+  --panel:#111827;
+  --panel2:#151f30;
+  --green:#35d399;
+  --blue:#42a5ff;
+  --text:#f5f8ff;
+  --muted:#9ba9bd;
+  --border:#25344a;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif}
-header{height:75px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
-.logo{font-weight:900;font-size:23px;letter-spacing:2px}
-.logo span{color:var(--green)}
-button,a{cursor:pointer}
-button{font-family:inherit}
-.lang{background:#17231e;color:white;padding:12px 17px;border:1px solid var(--border);border-radius:9px}
-.hero{max-width:950px;text-align:center;margin:110px auto 90px;padding:20px}
-.tag{color:var(--green);letter-spacing:3px;font-size:12px;font-weight:bold}
-h1{font-size:clamp(40px,7vw,76px);line-height:1.08;margin:25px 0}
-h1 span{color:var(--green)}
-p{color:var(--muted);line-height:1.8}
-.hero p{max-width:650px;margin:20px auto 30px}
-.btn{display:inline-block;background:var(--green);color:#06130d;padding:16px 24px;border-radius:8px;text-decoration:none;font-weight:bold;margin:7px}
-.btn.alt{background:#17231e;color:white;border:1px solid var(--border)}
-section{max-width:1050px;margin:85px auto;padding:20px}
-h2{text-align:center;font-size:32px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:17px;margin-top:35px}
-.card{background:var(--panel);padding:25px;border:1px solid var(--border);border-radius:14px}
-.card h3{color:var(--green)}
-#application{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:35px}
-form{max-width:650px;margin:30px auto}
-label{display:block;margin:18px 0 8px;font-size:14px}
-input,select,textarea{width:100%;padding:14px;background:#080f0c;color:white;border:1px solid #34483d;border-radius:8px;font-size:15px}
-textarea{min-height:100px;resize:vertical}
-.submit{width:100%;padding:16px;margin-top:25px;background:var(--green);color:#06130d;font-weight:bold;border:0;border-radius:8px}
-.note{font-size:12px}
-#language{min-height:calc(100vh - 75px);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
-.language-card{max-width:600px;width:100%;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:45px 25px}
-.language-options{display:flex;gap:15px;margin-top:30px}
-.language-options button{flex:1;padding:22px;background:#172820;color:white;border:1px solid #345344;border-radius:12px;font-size:17px}
-.language-options button:hover{border-color:var(--green)}
-footer{text-align:center;padding:35px;border-top:1px solid var(--border);color:var(--muted)}
-footer a{color:var(--green)}
-@media(max-width:550px){.language-options{flex-direction:column}.hero{margin:65px auto}header{padding:0 5%}}
+
+* {box-sizing:border-box}
+
+html {scroll-behavior:smooth}
+
+body {
+  margin:0;
+  background:
+    radial-gradient(ellipse at 10% 10%,#103b3433,transparent 40%),
+    radial-gradient(ellipse at 90% 30%,#123d6333,transparent 40%),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+}
+
+button,a {cursor:pointer}
+button {font-family:inherit}
+
+header {
+  height:76px;
+  padding:0 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  background:#080b12dd;
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(12px);
+}
+
+.logo {
+  font-weight:900;
+  font-size:23px;
+  letter-spacing:2px;
+}
+
+.logo span {color:var(--green)}
+.logo em {color:var(--blue);font-style:normal}
+
+.lang {
+  background:var(--panel2);
+  color:white;
+  padding:11px 16px;
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+
+#language {
+  min-height:calc(100vh - 76px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+.language-card {
+  max-width:600px;
+  width:100%;
+  text-align:center;
+  padding:55px 30px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  background:linear-gradient(145deg,#172337,#101722);
+  box-shadow:0 20px 70px #0008;
+}
+
+.language-card .logo {font-size:32px}
+
+.language-options {
+  display:flex;
+  gap:15px;
+  margin-top:30px;
+}
+
+.language-options button {
+  flex:1;
+  padding:20px;
+  background:#172b36;
+  color:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  font-size:17px;
+  transition:.2s;
+}
+
+.language-options button:hover {
+  border-color:var(--green);
+  transform:translateY(-3px);
+}
+
+.hero {
+  max-width:1050px;
+  text-align:center;
+  margin:100px auto 85px;
+  padding:25px;
+}
+
+.tag {
+  display:inline-block;
+  padding:9px 16px;
+  border-radius:30px;
+  color:var(--green);
+  background:#35d39916;
+  border:1px solid #35d39944;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+h1 {
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.08;
+  margin:25px 0;
+}
+
+h1 span {
+  background:linear-gradient(90deg,var(--green),var(--blue));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+p {
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.hero p {
+  max-width:650px;
+  margin:20px auto 30px;
+  font-size:17px;
+}
+
+.hero-art {
+  font-size:60px;
+  margin:25px 0;
+  filter:drop-shadow(0 0 20px #35d39944);
+}
+
+.btn {
+  display:inline-block;
+  padding:16px 24px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+  margin:7px;
+  transition:.2s;
+}
+
+.btn.primary {
+  background:linear-gradient(100deg,var(--green),#61d7e8);
+  color:#07130f;
+}
+
+.btn.secondary {
+  background:var(--panel2);
+  color:white;
+  border:1px solid var(--border);
+}
+
+.btn:hover {transform:translateY(-3px)}
+
+section {
+  max-width:1100px;
+  margin:90px auto;
+  padding:20px;
+}
+
+.section-tag {
+  text-align:center;
+  color:var(--green);
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+h2 {
+  text-align:center;
+  font-size:34px;
+  margin:12px 0;
+}
+
+.section-desc {
+  text-align:center;
+  max-width:650px;
+  margin:0 auto;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin-top:40px;
+}
+
+.card {
+  background:linear-gradient(145deg,#172337,#101722);
+  padding:26px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  transition:.25s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  border-color:#35d39988;
+}
+
+.card .emoji {
+  font-size:35px;
+  margin-bottom:12px;
+}
+
+.card h3 {color:var(--green)}
+.card p {font-size:14px}
+
+.why {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+  margin-top:35px;
+}
+
+.why-item {
+  padding:22px;
+  border-radius:16px;
+  background:#121c2a;
+  border:1px solid var(--border);
+}
+
+.why-item strong {color:var(--blue)}
+
+#application {
+  background:linear-gradient(145deg,#131f30,#101722);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:35px;
+  box-shadow:0 20px 60px #0005;
+}
+
+.progress-area {
+  max-width:650px;
+  margin:35px auto;
+}
+
+.progress-labels {
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.progress-labels span {
+  font-size:12px;
+  color:var(--muted);
+}
+
+.progress-labels .active {color:var(--green);font-weight:bold}
+
+.progress-track {
+  height:8px;
+  background:#26364a;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:33.33%;
+  background:linear-gradient(90deg,var(--green),var(--blue));
+  border-radius:20px;
+  transition:.3s;
+}
+
+form {
+  max-width:650px;
+  margin:30px auto 0;
+}
+
+.form-step {display:none}
+.form-step.active {display:block;animation:appear .3s ease}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(8px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+.step-title {
+  font-size:23px;
+  margin-bottom:8px;
+}
+
+.step-description {
+  margin-top:0;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+.field {margin:19px 0}
+
+label {
+  display:block;
+  margin-bottom:9px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+input,select,textarea {
+  width:100%;
+  padding:15px;
+  background:#080f1b;
+  color:white;
+  border:1px solid #34465e;
+  border-radius:10px;
+  font-size:15px;
+  outline:none;
+  transition:.2s;
+}
+
+input:focus,select:focus,textarea:focus {
+  border-color:var(--green);
+  box-shadow:0 0 0 3px #35d39918;
+}
+
+textarea {
+  min-height:120px;
+  resize:vertical;
+}
+
+select option {background:#111827}
+
+.form-buttons {
+  display:flex;
+  gap:12px;
+  margin-top:30px;
+}
+
+.form-buttons button {
+  flex:1;
+  padding:16px;
+  border:0;
+  border-radius:11px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.next {
+  background:linear-gradient(100deg,var(--green),#61d7e8);
+  color:#07130f;
+}
+
+.previous {
+  background:#26364a;
+  color:white;
+}
+
+.submit {
+  background:linear-gradient(100deg,var(--green),#61d7e8);
+  color:#07130f;
+}
+
+.note {
+  font-size:12px;
+  text-align:center;
+  margin-top:20px;
+}
+
+footer {
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+footer a {color:var(--green)}
+
+#formMessage {
+  text-align:center;
+  margin-top:20px;
+  font-weight:bold;
+}
+
+@media(max-width:600px) {
+  header {padding:0 5%}
+  .hero {margin:65px auto}
+  .language-options {flex-direction:column}
+  #application {padding:22px 16px}
+  .form-buttons {flex-direction:column}
+  .progress-labels span {font-size:10px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="logo">MARKET <span>HUB</span></div>
- <button class="lang" onclick="showLanguage()">🇫🇷 / 🇬🇧</button>
+  <div class="logo">MARKET <span>HUB</span><em>.</em></div>
+  <button class="lang" onclick="showLanguage()">🇫🇷 / 🇬🇧</button>
 </header>
 
 <div id="language">
- <div class="language-card">
-  <div class="logo">MARKET <span>HUB</span></div>
-  <p>WELCOME TO MARKET HUB</p>
-  <h1 style="font-size:35px">Choose your language</h1>
-  <p>Choisissez votre langue / Select your language</p>
-  <div class="language-options">
-   <button onclick="setLanguage('fr')">🇫🇷 Français</button>
-   <button onclick="setLanguage('en')">🇬🇧 English</button>
+  <div class="language-card">
+    <div class="logo">MARKET <span>HUB</span><em>.</em></div>
+    <div class="hero-art">📈 🚀</div>
+    <p>WELCOME TO MARKET HUB</p>
+    <h1 style="font-size:35px">Choose your language</h1>
+    <p>Choisissez votre langue / Select your language</p>
+    <div class="language-options">
+      <button onclick="setLanguage('fr')">🇫🇷 Français</button>
+      <button onclick="setLanguage('en')">🇬🇧 English</button>
+    </div>
   </div>
- </div>
 </div>
 
 <main id="home" hidden>
- <div class="hero">
-  <div class="tag" data-fr="RECRUTEMENT DE FORMATEURS" data-en="MENTOR RECRUITMENT"></div>
-  <h1 data-fr="Partage ton savoir.<br><span>Rejoins MARKET HUB.</span>" data-en="Share your knowledge.<br><span>Join MARKET HUB.</span>"></h1>
-  <p data-fr="Tu es trader et tu souhaites transmettre tes connaissances ? Rejoins notre communauté en tant que formateur et propose tes propres formations." data-en="Are you a trader who wants to share your knowledge? Join our community as a mentor and offer your own courses."></p>
-  <a href="#application" class="btn" data-fr="DEVENIR FORMATEUR →" data-en="BECOME A MENTOR →"></a>
-  <a href="https://discord.gg/ZGrYs8Bub" target="_blank" rel="noopener" class="btn alt">DISCORD ↗</a>
- </div>
 
- <section>
-  <h2 data-fr="Nos domaines de formation" data-en="Our training fields"></h2>
-  <div class="cards">
-   <div class="card"><h3>Forex</h3><p data-fr="Marché des devises et stratégies." data-en="Currency markets and strategies."></p></div>
-   <div class="card"><h3>Crypto</h3><p data-fr="Cryptomonnaies et analyse de marché." data-en="Cryptocurrencies and market analysis."></p></div>
-   <div class="card"><h3>Indices</h3><p data-fr="Indices boursiers et analyses." data-en="Stock indices and analysis."></p></div>
-   <div class="card"><h3>Stocks</h3><p data-fr="Actions et marchés financiers." data-en="Stocks and financial markets."></p></div>
-   <div class="card"><h3>Futures</h3><p data-fr="Contrats à terme et stratégies." data-en="Futures contracts and strategies."></p></div>
-   <div class="card"><h3>Risk Management</h3><p data-fr="Gestion du risque et discipline." data-en="Risk management and discipline."></p></div>
+  <div class="hero">
+    <div class="tag" data-fr="RECRUTEMENT DE FORMATEURS" data-en="MENTOR RECRUITMENT"></div>
+    <div class="hero-art">📊 💡 🚀</div>
+
+    <h1 data-fr="Ton expérience.<br><span>Notre communauté.</span>" data-en="Your experience.<br><span>Our community.</span>"></h1>
+
+    <p data-fr="Tu souhaites partager tes connaissances et aider les autres à mieux comprendre les marchés financiers ? Découvre les possibilités de rejoindre MARKET HUB comme formateur." data-en="Want to share your knowledge and help others better understand financial markets? Discover the opportunity to join MARKET HUB as a mentor."></p>
+
+    <a href="#application" class="btn primary" data-fr="POSTULER MAINTENANT →" data-en="APPLY NOW →"></a>
+    <a href="https://discord.gg/ZGrYs8Bub" target="_blank" rel="noopener" class="btn secondary">DISCORD ↗</a>
   </div>
- </section>
 
- <section id="application">
-  <h2 data-fr="Devenir formateur" data-en="Become a mentor"></h2>
-  <p style="text-align:center" data-fr="Présente-nous ton profil et ton projet." data-en="Tell us about yourself and your training plans."></p>
-  <form id="mentorForm">
-   <label data-fr="Nom ou pseudonyme Discord" data-en="Name or Discord username"></label>
-   <input required name="name" maxlength="100">
-   <label>Email</label>
-   <input required type="email" name="email">
-   <label data-fr="Spécialité" data-en="Specialty"></label>
-   <select required name="specialty">
-    <option value="" data-fr="Choisir une spécialité" data-en="Choose a specialty">Choisir une spécialité</option>
-    <option>Forex</option><option>Crypto</option><option>Indices</option>
-    <option>Stocks</option><option>Futures</option>
-    <option>Technical Analysis</option><option>Risk Management</option>
-    <option>Other</option>
-   </select>
-   <label data-fr="Expérience en trading" data-en="Trading experience"></label>
-   <textarea required name="experience"></textarea>
-   <label data-fr="Présente ta formation" data-en="Describe your course"></label>
-   <textarea required name="course"></textarea>
-   <label data-fr="Prix demandé et devise" data-en="Proposed price and currency"></label>
-   <input required name="price" placeholder="Ex: 100 EUR / 150 CAD">
-   <label data-fr="Portfolio ou preuves d'expérience (facultatif)" data-en="Portfolio or experience link (optional)"></label>
-   <input name="portfolio" type="url" placeholder="https://...">
-   <button class="submit" type="submit" data-fr="ENVOYER MA CANDIDATURE" data-en="SUBMIT APPLICATION"></button>
-   <p class="note" data-fr="Cette version de démonstration ne transmet pas encore les candidatures. Les résultats financiers ne sont pas garantis." data-en="This demo does not yet submit applications. Financial results are not guaranteed."></p>
-  </form>
- </section>
+  <section>
+    <div class="section-tag" data-fr="NOS SPÉCIALITÉS" data-en="OUR SPECIALTIES"></div>
+    <h2 data-fr="Nos domaines de formation" data-en="Our training fields"></h2>
+    <p class="section-desc" data-fr="Plusieurs domaines pour partager tes connaissances et ton expérience." data-en="Different fields where you can share your knowledge and experience."></p>
+
+    <div class="cards">
+      <div class="card"><div class="emoji">💱</div><h3>Forex</h3><p data-fr="Marché des devises et notions fondamentales." data-en="Currency markets and fundamentals."></p></div>
+      <div class="card"><div class="emoji">₿</div><h3>Crypto</h3><p data-fr="Cryptomonnaies et compréhension des marchés." data-en="Cryptocurrencies and market knowledge."></p></div>
+      <div class="card"><div class="emoji">📊</div><h3>Indices</h3><p data-fr="Indices boursiers et analyse." data-en="Stock indices and analysis."></p></div>
+      <div class="card"><div class="emoji">🏢</div><h3>Stocks</h3><p data-fr="Actions et fonctionnement des marchés." data-en="Stocks and how markets work."></p></div>
+      <div class="card"><div class="emoji">⚡</div><h3>Futures</h3><p data-fr="Contrats à terme et concepts associés." data-en="Futures contracts and related concepts."></p></div>
+      <div class="card"><div class="emoji">🛡️</div><h3>Risk Management</h3><p data-fr="Gestion du risque et discipline." data-en="Risk management and discipline."></p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag" data-fr="POURQUOI NOUS REJOINDRE ?" data-en="WHY JOIN US?"></div>
+    <h2 data-fr="Construisons quelque chose ensemble." data-en="Let's build something together."></h2>
+
+    <div class="why">
+      <div class="why-item">🎓 <strong data-fr="Partager ton savoir" data-en="Share your knowledge"></strong><p data-fr="Transmets tes connaissances de façon claire et responsable." data-en="Share your knowledge clearly and responsibly."></p></div>
+      <div class="why-item">🤝 <strong data-fr="Une communauté" data-en="A community"></strong><p data-fr="Échange avec des personnes qui souhaitent apprendre." data-en="Connect with people who want to learn."></p></div>
+      <div class="why-item">🌟 <strong data-fr="Développer tes compétences" data-en="Develop your skills"></strong><p data-fr="Améliore tes capacités de communication et de pédagogie." data-en="Improve your communication and teaching skills."></p></div>
+    </div>
+  </section>
+
+  <section id="application">
+    <div class="section-tag" data-fr="REJOINS L'ÉQUIPE" data-en="JOIN THE TEAM"></div>
+    <h2 data-fr="Ta candidature" data-en="Your application"></h2>
+    <p class="section-desc" data-fr="Prends quelques minutes pour nous présenter ton profil. Chaque candidature sera examinée." data-en="Take a few minutes to introduce yourself. Every application will be reviewed."></p>
+
+    <div class="progress-area">
+      <div class="progress-labels">
+        <span class="active" data-fr="1. Profil" data-en="1. Profile"></span>
+        <span data-fr="2. Expérience" data-en="2. Experience"></span>
+        <span data-fr="3. Motivation" data-en="3. Motivation"></span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <form id="mentorForm">
+
+      <!-- ÉTAPE 1 -->
+      <div class="form-step active">
+        <h3 class="step-title" data-fr="👤 Parle-nous de toi" data-en="👤 Tell us about yourself"></h3>
+        <p class="step-description" data-fr="Commençons par quelques informations générales." data-en="Let's start with some general information."></p>
+
+        <div class="field">
+          <label data-fr="Nom ou pseudonyme Discord *" data-en="Name or Discord username *"></label>
+          <input required name="name" maxlength="100" placeholder="Ex: Trader123">
+        </div>
+
+        <div class="field">
+          <label data-fr="Tranche d'âge *" data-en="Age range *"></label>
+          <select required name="age">
+            <option value="" data-fr="Choisir..." data-en="Choose...">Choisir...</option>
+            <option>13–17</option>
+            <option>18–20</option>
+            <option>21–25</option>
+            <option>26–35</option>
+            <option>36+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-fr="Pays de résidence *" data-en="Country of residence *"></label>
+          <input required name="country" placeholder="Ex: Canada">
+        </div>
+
+        <div class="field">
+          <label>Email *</label>
+          <input required type="email" name="email" placeholder="exemple@email.com">
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 -->
+      <div class="form-step">
+        <h3 class="step-title" data-fr="📈 Ton expérience" data-en="📈 Your experience"></h3>
+        <p class="step-description" data-fr="Explique-nous ton parcours et tes connaissances." data-en="Tell us about your background and knowledge."></p>
+
+        <div class="field">
+          <label data-fr="Ta spécialité principale *" data-en="Your main specialty *"></label>
+          <select required name="specialty">
+            <option value="" data-fr="Choisir une spécialité" data-en="Choose a specialty">Choisir une spécialité</option>
+            <option>Forex</option>
+            <option>Crypto</option>
+            <option>Indices</option>
+            <option>Stocks</option>
+            <option>Futures</option>
+            <option>Technical Analysis</option>
+            <option>Risk Management</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-fr="Depuis combien de temps étudies-tu le trading ? *" data-en="How long have you studied trading? *"></label>
+          <select required name="experienceTime">
+            <option value="">Choisir...</option>
+            <option data-fr="Moins de 6 mois" data-en="Less than 6 months">Moins de 6 mois</option>
+            <option data-fr="6 mois à 1 an" data-en="6 months to 1 year">6 mois à 1 an</option>
+            <option data-fr="1 à 3 ans" data-en="1 to 3 years">1 à 3 ans</option>
+            <option data-fr="3 à 5 ans" data-en="3 to 5 years">3 à 5 ans</option>
+            <option data-fr="Plus de 5 ans" data-en="More than 5 years">Plus de 5 ans</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-fr="Décris ton expérience et tes connaissances *" data-en="Describe your experience and knowledge *"></label>
+          <textarea required name="experience" maxlength="2000" placeholder="..."></textarea>
+        </div>
+
+        <div class="field">
+          <label data-fr="As-tu déjà enseigné ou accompagné des élèves ? *" data-en="Have you taught or mentored students before? *"></label>
+          <select required name="teaching">
+            <option value="">Choisir...</option>
+            <option data-fr="Oui, régulièrement" data-en="Yes, regularly">Oui, régulièrement</option>
+            <option data-fr="Oui, quelques fois" data-en="Yes, a few times">Oui, quelques fois</option>
+            <option data-fr="Non, mais je souhaite commencer" data-en="No, but I would like to start">Non, mais je souhaite commencer</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-fr="Portfolio ou liens utiles (facultatif)" data-en="Portfolio or useful links (optional)"></label>
+          <input name="portfolio" type="url" placeholder="https://...">
+        </div>
+      </div>
+
+      <!-- ÉTAPE 3 -->
+      <div class="form-step">
+        <h3 class="step-title" data-fr="🚀 Tes motivations" data-en="🚀 Your motivation"></h3>
+        <p class="step-description" data-fr="C'est le moment de nous expliquer pourquoi tu souhaites rejoindre l'équipe." data-en="Tell us why you want to join the team."></p>
+
+        <div class="field">
+          <label data-fr="Pourquoi veux-tu devenir formateur chez MARKET HUB ? *" data-en="Why do you want to become a mentor at MARKET HUB? *"></label>
+          <textarea required name="motivation" maxlength="2000"></textarea>
+        </div>
+
+        <div class="field">
+          <label data-fr="Pourquoi devrions-nous te choisir ? *" data-en="Why should we choose you? *"></label>
+          <textarea required name="whyYou" maxlength="2000"></textarea>
+        </div>
+
+        <div class="field">
+          <label data-fr="Comment aiderais-tu un débutant qui ne comprend pas un concept ? *" data-en="How would you help a beginner who doesn't understand a concept? *"></label>
+          <textarea required name="teachingMethod" maxlength="2000"></textarea>
+        </div>
+
+        <div class="field">
+          <label data-fr="Combien d'heures par semaine peux-tu consacrer à MARKET HUB ? *" data-en="How many hours per week can you dedicate to MARKET HUB? *"></label>
+          <select required name="availability">
+            <option value="">Choisir...</option>
+            <option>1–3</option>
+            <option>4–6</option>
+            <option>7–10</option>
+            <option>10+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-fr="Quel est ton prix proposé et dans quelle devise ? (facultatif)" data-en="What is your proposed price and currency? (optional)"></label>
+          <input name="price" placeholder="Ex: 100 CAD">
+        </div>
+
+        <div class="field">
+          <label data-fr="Informations supplémentaires (facultatif)" data-en="Additional information (optional)"></label>
+          <textarea name="extra" maxlength="1000"></textarea>
+        </div>
+
+        <p class="note" data-fr="Les candidatures sont examinées individuellement. Ne partage jamais de mot de passe, d'identifiants financiers ou d'informations bancaires dans ce formulaire." data-en="Applications are reviewed individually. Never share passwords, financial login details or banking information in this form."></p>
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" class="previous" id="prevBtn" hidden data-fr="← PRÉCÉDENT" data-en="← BACK"></button>
+        <button type="button" class="next" id="nextBtn" data-fr="SUIVANT →" data-en="NEXT →"></button>
+        <button type="submit" class="submit" id="submitBtn" hidden data-fr="ENVOYER MA CANDIDATURE ✓" data-en="SUBMIT APPLICATION ✓"></button>
+      </div>
+
+      <div id="formMessage" role="status"></div>
+    </form>
+  </section>
+
 </main>
 
 <footer>
- MARKET HUB © 2026 · <a href="https://discord.gg/ZGrYs8Bub">Discord</a>
+  MARKET HUB © 2026 · <a href="https://discord.gg/ZGrYs8Bub">Discord</a>
+  <p data-fr="Apprendre, partager et progresser ensemble." data-en="Learn, share and grow together."></p>
 </footer>
 
 <script>
-let currentLanguage='fr';
+let currentLanguage = 'fr';
+let currentStep = 0;
 
-function setLanguage(lang){
- currentLanguage=lang;
- document.documentElement.lang=lang;
- document.getElementById('language').hidden=true;
- document.getElementById('home').hidden=false;
- document.querySelectorAll('[data-fr]').forEach(el=>{
-  el.innerHTML=el.dataset[lang];
- });
- document.querySelectorAll('option[data-fr]').forEach(el=>{
-  el.textContent=el.dataset[lang];
- });
+const steps = document.querySelectorAll('.form-step');
+const progressFill = document.getElementById('progressFill');
+const progressLabels = document.querySelectorAll('.progress-labels span');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+
+function setLanguage(lang) {
+  currentLanguage = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('language').hidden = true;
+  document.getElementById('home').hidden = false;
+
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.innerHTML = el.dataset[lang];
+  });
+
+  document.querySelectorAll('option[data-fr]').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+
+  updateStep();
 }
 
-function showLanguage(){
- document.getElementById('home').hidden=true;
- document.getElementById('language').hidden=false;
+function showLanguage() {
+  document.getElementById('home').hidden = true;
+  document.getElementById('language').hidden = false;
 }
 
-document.getElementById('mentorForm').addEventListener('submit',function(e){
- e.preventDefault();
- alert(currentLanguage==='fr'
- ? "Le formulaire est en démonstration. Le système d'envoi sera connecté prochainement."
- : "This is a demo form. Submission will be connected soon.");
+function updateStep() {
+  steps.forEach((step, index) => {
+    step.classList.toggle('active', index === currentStep);
+  });
+
+  progressFill.style.width = ((currentStep + 1) / steps.length * 100) + '%';
+
+  progressLabels.forEach((label, index) => {
+    label.classList.toggle('active', index === currentStep);
+  });
+
+  prevBtn.hidden = currentStep === 0;
+  nextBtn.hidden = currentStep === steps.length - 1;
+  submitBtn.hidden = currentStep !== steps.length - 1;
+
+  document.getElementById('formMessage').textContent = '';
+}
+
+function validateCurrentStep() {
+  const fields = steps[currentStep].querySelectorAll('input,select,textarea');
+
+  for (const field of fields) {
+    if (!field.checkValidity()) {
+      field.reportValidity();
+      return false;
+    }
+  }
+
+  return true;
+}
+
+nextBtn.addEventListener('click', () => {
+  if (!validateCurrentStep()) return;
+
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    updateStep();
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  if (currentStep > 0) {
+    currentStep--;
+    updateStep();
+  }
+});
+
+document.getElementById('mentorForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  if (!validateCurrentStep()) return;
+
+  document.getElementById('formMessage').textContent =
+    currentLanguage === 'fr'
+    ? "Le formulaire est prêt, mais l'envoi doit encore être connecté au serveur Discord."
+    : "The form is ready, but submission still needs to be connected to the Discord server.";
+
+  document.getElementById('formMessage').style.color = 'var(--green)';
 });
 </script>
+
 </body>
 </html>
